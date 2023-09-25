@@ -36,8 +36,8 @@ class GUID:
         self.strGUID = strGUID
         self.binGUID = unhexlify(self.strGUID)
         (self.data1, self.data2, self.data3) = unpack('IHH',self.binGUID[:8])
-        self.data4 = hexlify(self.binGUID[8:10])
-        self.data5 = hexlify(self.binGUID[10:])
+        self.data4 = hexlify(self.binGUID[8:10]).decode("ascii")
+        self.data5 = hexlify(self.binGUID[10:]).decode("ascii")
 
     def __str__(self):
         return "%08x-%04x-%04x-%s-%s" % (self.data1, self.data2, self.data3, self.data4, self.data5)    
